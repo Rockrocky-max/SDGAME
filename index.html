@@ -81,14 +81,17 @@
     }
     @media (max-width: 768px) {
         html {
-            font-size: 22px;
+            font-size: 40px;
         }
         .options label {
-            font-size: 18px;
+            font-size: 40px;
         }
         button {
-            font-size: 18px;
-            padding: 12px 24px;
+            font-size: 40px;
+            padding: 20px 40px;
+        }
+        .result {
+            font-size: 40px;
         }
     }
 </style>
@@ -169,6 +172,13 @@ function updateProgressBar(index) {
     document.getElementById("progressBar").style.width = percent + "%";
 }
 
+function restartQuiz() {
+  document.getElementById("result").innerHTML = "";
+  document.querySelectorAll('input[type=radio]').forEach(r => r.checked = false);
+  currentQuestion = 0;
+  showQuestion(currentQuestion);
+}
+
 quizData.forEach((choices, index) => {
     const qDiv = document.createElement("div");
     qDiv.className = "question";
@@ -228,6 +238,7 @@ function calculateResult() {
     <div style="margin-bottom: 20px;">A: ${result.A} 個｜B: ${result.B} 個｜C: ${result.C} 個｜D: ${result.D} 個</div>
     <img src="${data.img}" alt="結果圖">
     <div>${data.text.replace(/\n/g, "<br>")}</div>
+    <div class="nav-buttons"><button onclick="restartQuiz()">重新測驗</button></div>
   `;
 }
 

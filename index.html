@@ -5,45 +5,315 @@
 <meta charset="utf-8"/>
 <title>灌籃高手 × 四能量測驗</title>
 <style>
-    body { font-family: sans-serif; background-color: #fff8ee; padding: 20px; }
-    h1 { color: #333; }
-    .question { margin-bottom: 20px; }
-    .options label { display: block; margin: 5px 0; }
-    .result { margin-top: 30px; font-size: 18px; font-weight: bold; white-space: pre-line; }
-    button { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    body { font-family: sans-serif; background-color: #fff8ee; padding: 20px; font-size: 20px; }
+    h1 { color: #333; font-size: 32px; }
+    .question { margin-bottom: 30px; font-size: 20px; }
+    .options label { display: block; margin: 10px 0; font-size: 20px; }
+    .result { margin-top: 30px; font-size: 20px; font-weight: bold; white-space: pre-line; }
+    button { padding: 20px 40px; font-size: 24px; margin-top: 30px; }
 </style>
 </head>
 <body>
 <h1>灌籃高手 × 四能量測驗</h1>
 <form id="quizForm">
-<div id="questions"></div>
+<div id="questions">
+<div class="question"><p><strong>1. 球隊即將與強敵比賽，你的第一反應是什麼？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q0" value="A">
+              A. 太好了！正是發揮實力的時候！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q0" value="B">
+              B. 場地我熟，一定會贏的，我要全力表現！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q0" value="C">
+              C. 我們要確保每個人都準備好了
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q0" value="D">
+              D. 先來分析對手戰術與弱點
+            </label>
+        </div>
+        </div>
+<div class="question"><p><strong>2. 比賽中隊友失誤，你會怎麼反應？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q1" value="A">
+              A. 沒事，我來補上！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q1" value="B">
+              B. 加油啦！別灰心，我們還能贏！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q1" value="C">
+              C. 穩住陣來，按計畫來就好。
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q1" value="D">
+              D. 回去看錄影，找出問題根源
+            </label>
+        </div>
+        </div>
+<div class="question"><p><strong>3. 如果你是球隊主將，你會怎麽帶隊？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q2" value="A">
+              A. 帶頭衝，拚到底！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q2" value="B">
+              B. 激勵大家，提升團隊士氣！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q2" value="C">
+              C. 安排每個人的位置與任務
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q2" value="D">
+              D. 擬定策略，針對每場比賽做準備
+            </label>
+        </div>
+        </div>
+<div class="question"><p><strong>4. 當比數落後，壓力超大時，你會？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q3" value="A">
+              A. 燃起鬥志，力挽狂瀾
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q3" value="B">
+              B. 靠著隊員的情緒，鼓舞士氣！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q3" value="C">
+              C. 保持冷靜，照步驟穩住節奏
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q3" value="D">
+              D. 立即重新評估策略，調整打法！
+            </label>
+        </div>
+        </div>
+<div class="question"><p><strong>5. 教練安排的訓練枯燥乏味，你會？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q4" value="A">
+              A. 忍不住偷偷做自己喜歡的進攻技巧
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q4" value="B">
+              B. 一邊練習一邊抱怨但還是照做
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q4" value="C">
+              C. 照規矩來，不偷步也不會少
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q4" value="D">
+              D. 確保自己依計畫準備、重複修正到完美
+            </label>
+        </div>
+        </div>
+<div class="question"><p><strong>6. 球場以外，你最看重什麼？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q5" value="A">
+              A. 成就與突破紀錄
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q5" value="B">
+              B. 人際關係與被認可感
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q5" value="C">
+              C. 團隊氛圍與彼此信任
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q5" value="D">
+              D. 統整計畫，掌握主導權
+            </label>
+        </div>
+        </div>
+<div class="question"><p><strong>7. 對你來說，一場「成功的比賽」是什麼樣子？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q6" value="A">
+              A. 我衝就是了啊，全力以赴！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q6" value="B">
+              B. 我發揮熱情，全場都記得我！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q6" value="C">
+              C. 我穩定發揮，球隊齊心奮鬥！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q6" value="D">
+              D. 我預測準確、戰術執行完美！
+            </label>
+        </div>
+        </div>
+<div class="question"><p><strong>8. 球隊練球時，你最常做的事情是？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q7" value="A">
+              A. 主動教導隊長，一對一指導
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q7" value="B">
+              B. 打氣加油，讓整隊氣氛熱起來
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q7" value="C">
+              C. 默默維持本功，穩紮穩打
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q7" value="D">
+              D. 做筆記、記錄進度、觀察隊友的提升
+            </label>
+        </div>
+        </div>
+<div class="question"><p><strong>9. 如果今天打輸比賽，你會？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q8" value="A">
+              A. 超不爽啊！明天就加倍訓練！
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q8" value="B">
+              B. 雖然難過，但還是先安慰隊友再說
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q8" value="C">
+              C. 冷靜下來檢討，並鼓勵大家繼續努力
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q8" value="D">
+              D. 回去看影片，分析失分的原因與問題
+            </label>
+        </div>
+        </div>
+<div class="question"><p><strong>10. 球隊要選隊長，你認為應該怎麼選？</strong></p>
+        <div class="options">
+            <label>
+              <input type="radio" name="q9" value="A">
+              A. 選擇力量強、敢帶的人
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q9" value="B">
+              B. 選擇有人氣、能帶動士氣的人
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q9" value="C">
+              C. 選最穩定、能夠照顧全隊的人
+            </label>
+        </div>
+        
+        <div class="options">
+            <label>
+              <input type="radio" name="q9" value="D">
+              D. 選最有紀律、頭腦清楚、能擬戰術的人
+            </label>
+        </div>
+        </div>
+</div>
 <button onclick="calculateResult()" type="button">計算結果</button>
 </form>
 <div class="result" id="result"></div>
 
 <script>
-const quizData = [["太好了！正是發揮實力的時候！", "場地我熟，我要全力表現！", "我們要確保每個人都準備好了", "先來分析對手戰術與弱點"], ["沒事，我來補上！", "加油啦！別灰心，我們還能贏！", "穩住陣來，按計畫來就好。", "回去看錄影，找出問題根源"], ["帶頭衝，拚到底！", "激勵大家，提升團隊士氣！", "安排每個人的位置與任務", "擬定策略，針對每場比賽做準備"], ["燃起鬥志，力挽狂瀾", "靠著隊員的情緒，鼓舞士氣！", "保持冷靜，照步驟穩住節奏", "立即重新評估策略，調整打法！"], ["忍不住偷偷做自己喜歡的進攻技巧", "一邊練習一邊抱怨但還是照做", "照規矩來，不偷步也不會少", "確保自己依計畫準備、重複修正到完美"], ["成就與突破紀錄", "人際關係與被認可感", "團隊氛圍與彼此信任", "統整計畫，掌握主導權"], ["我衝就是了啊，全力以赴！", "我發揮熱情，全場都記得我！", "我穩定發揮，球隊齊心奮鬥！", "我預測準確、戰術執行完美！"], ["主動教導隊長，一對一指導", "打氣加油，讓整隊氣氛熱起來", "默默維持本功，穩紮穩打", "做筆記、記錄進度、觀察隊友的提升"], ["超不爽啊！明天就加倍訓練！", "雖然難過，但還是先安慰隊友再說", "冷靜下來檢討，並鼓勵大家繼續努力", "回去看影片，分析失分的原因與問題"], ["選擇力量強、敢帶的人", "選擇有人氣、能帶動士氣的人", "選最穩定、能夠照顧全隊的人", "選最有紀律、頭腦清楚、能擬戰術的人"]];
-const resultData = {"A": {"img": "SD_01.jpg", "text": "恭喜你是「發電機型天才」⚡️\n你擅長創意與啟動，點子多、靈感快，是團隊的靈魂引擎！\n\n代表人物：賈伯斯\n你善於天馬行空地思考新點子，勇於開創與挑戰，是最能「打破常規、開創未來」的人才！"}, "B": {"img": "SD_02.jpg", "text": "你是「火焰型天才」🔥\n你擅長人際互動，總能帶動團隊氣氛，是最有人緣的亮眼明星！\n\n代表人物：歐普拉\n你善於交流與帶動氣氛，在人群中總能自然地被看見與信任，是人氣的象徵。"}, "C": {"img": "SD_03.jpg", "text": "你是「節奏型天才」🎵\n你節奏穩定、腳踏實地，懂得團隊運作，是信任與穩定的支柱！\n\n代表人物：巴菲特\n你擅長感知環境、堅守流程，讓團隊在亂流中找到節奏與平衡，是默默守護的大將。"}, "D": {"img": "SD_04.jpg", "text": "你是「鋼鐵型天才」⚙️\n你重視邏輯與系統，是團隊中最可靠的執行者！\n\n代表人物：貝佐斯\n你善於拆解問題、建立制度、優化流程，是讓團隊前進的穩固骨幹。"}};
 
-const questionsDiv = document.getElementById("questions");
-
-quizData.forEach((choices, index) => {
-  const qDiv = document.createElement("div");
-  qDiv.className = "question";
-  qDiv.innerHTML = `<p><strong>${index + 1}.</strong></p>`;
-  choices.forEach((choice, i) => {
-    const letter = String.fromCharCode(65 + i);
-    qDiv.innerHTML += `
-      <div class="options">
-        <label>
-          <input type="radio" name="q${index}" value="${letter}">
-          ${letter}. ${choice}
-        </label>
-      </div>
-    `;
-  });
-  questionsDiv.appendChild(qDiv);
-});
 
 function calculateResult() {
   const result = { A: 0, B: 0, C: 0, D: 0 };

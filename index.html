@@ -10,7 +10,7 @@
         padding: 0;
         font-family: sans-serif;
         background-color: #fff8ee;
-        font-size: 20px;
+        font-size: 40px;
         overflow-x: hidden;
     }
     .banner img {
@@ -35,10 +35,10 @@
         display: block;
         padding: 15px;
         background: white;
-        border: 1px solid #ccc;
-        border-radius: 12px;
-        margin: 10px 0;
-        font-size: 20px;
+        border: 2px solid #666;
+        border-radius: 16px;
+        margin: 20px 0;
+        font-size: 40px;
         width: 100%;
         box-sizing: border-box;
     }
@@ -47,24 +47,24 @@
         margin: 30px 0;
     }
     button {
-        padding: 15px 30px;
-        font-size: 20px;
+        padding: 20px 40px;
+        font-size: 40px;
         margin: 0 10px;
         border: none;
-        border-radius: 8px;
+        border-radius: 12px;
         background-color: #007BFF;
         color: white;
     }
     .result {
         margin-top: 30px;
-        font-size: 20px;
+        font-size: 40px;
         font-weight: bold;
         white-space: pre-line;
         max-width: 800px;
         margin: 30px auto;
     }
     img {
-        max-width: 90%;
+        width: 100%;
         display: block;
         margin: 0 auto 20px auto;
     }
@@ -78,21 +78,6 @@
         background-color: #007BFF;
         width: 0%;
         transition: width 0.3s ease;
-    }
-    @media (max-width: 768px) {
-        html {
-            font-size: 40px;
-        }
-        .options label {
-            font-size: 40px;
-        }
-        button {
-            font-size: 40px;
-            padding: 20px 40px;
-        }
-        .result {
-            font-size: 40px;
-        }
     }
 </style>
 </head>
@@ -154,6 +139,11 @@ function showQuestion(index) {
 }
 
 function nextQuestion() {
+    const selected = document.querySelector(`input[name='q${currentQuestion}']:checked`);
+    if (!selected) {
+        alert("請選擇一個選項才能進入下一題");
+        return;
+    }
     if (currentQuestion < quizData.length - 1) {
         currentQuestion++;
         showQuestion(currentQuestion);

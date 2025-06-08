@@ -1,1 +1,248 @@
-<!-- 最終版本內容稍後補入 -->
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<title>灌籃高手 × 四能量測驗</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: #fff8ee;
+        font-size: 20px;
+        overflow-x: hidden;
+    }
+    .banner img {
+        width: 100%;
+        display: block;
+    }
+    .question {
+        display: none;
+        padding: 20px;
+        max-width: 800px;
+        margin: auto;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+    }
+    .question.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .options label {
+        display: block;
+        padding: 15px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        margin: 10px 0;
+        font-size: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .nav-buttons {
+        text-align: center;
+        margin: 30px 0;
+    }
+    button {
+        padding: 15px 30px;
+        font-size: 20px;
+        margin: 0 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #007BFF;
+        color: white;
+    }
+    .result {
+        margin-top: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        white-space: pre-line;
+        max-width: 800px;
+        margin: 30px auto;
+    }
+    img {
+        max-width: 90%;
+        display: block;
+        margin: 0 auto 20px auto;
+    }
+    .progress-container {
+        width: 100%;
+        background-color: #eee;
+        height: 10px;
+    }
+    .progress-bar {
+        height: 10px;
+        background-color: #007BFF;
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+    @media (max-width: 768px) {
+        html {
+            font-size: 40px;
+        }
+        .options label {
+            font-size: 40px;
+        }
+        button {
+            font-size: 40px;
+            padding: 20px 40px;
+        }
+        .result {
+            font-size: 40px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="banner">
+  <img src="SD_title.jpg" alt="灌籃高手四能量測驗標題圖">
+</div>
+<div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+<form id="quizForm">
+<div id="questions"></div>
+</form>
+<div class="result" id="result"></div>
+
+<script>
+const quizData = [
+["太好了！正是發揮實力的時候！","場地我熟，一定會贏的，我要全力表現！","我們要確保每個人都準備好了","先來分析對手戰術與弱點"],
+["沒事，我來補上！","加油啦！別灰心，我們還能贏！","穩住陣來，按計畫來就好。","回去看錄影，找出問題根源"],
+["帶頭衝，拚到底！","激勵大家，提升團隊士氣！","安排每個人的位置與任務","擬定策略，針對每場比賽做準備"],
+["燃起鬥志，力挽狂瀾","靠著隊員的情緒，鼓舞士氣！","保持冷靜，照步驟穩住節奏","立即重新評估策略，調整打法！"],
+["偷偷做自己喜歡的進攻技巧","一邊練習一邊抱怨但還是照做","照規矩來，不偷步也不會少","依計畫準備、重複修正到完美"],
+["成就與突破紀錄","人際關係與被認可感","團隊氛圍與彼此信任","統整計畫，掌握主導權"],
+["我衝就是了啊，全力以赴！","我發揮熱情，全場都記得我！","我穩定發揮，球隊齊心奮鬥！","我預測準確、戰術執行完美！"],
+["主動教導隊長，一對一指導","打氣加油，讓整隊氣氛熱起來","默默維持本功，穩紮穩打","做筆記、記錄進度、觀察隊友提升"],
+["超不爽啊！明天就加倍訓練！","雖然難過，但還是先安慰隊友再說","冷靜下來檢討，鼓勵大家繼續努力","看影片分析失分的原因與問題"],
+["選擇力量強、敢帶的人","選擇有人氣、能帶動士氣的人","選穩定、能夠照顧全隊的人","選最有紀律、頭腦清楚、會擬戰術的人"]
+];
+
+const questionTitles = [
+"球隊即將與強敵比賽，你的第一反應是什麼？",
+"比賽中隊友失誤，你會怎麼反應？",
+"如果你是球隊主將，你會怎麽帶隊？",
+"當比數落後，壓力超大時，你會？",
+"教練安排的訓練枯燥乏味，你會？",
+"球場以外，你最看重什麼？",
+"對你來說，一場「成功的比賽」是什麼樣子？",
+"球隊練球時，你最常做的事情是？",
+"如果今天打輸比賽，你會？",
+"球隊要選隊長，你認為應該怎麼選？"
+];
+
+const resultData = {
+  A: { img: "SD_01.jpg", text: "你是「發電機型天才」⚡️\n創意十足，勇於啟動與帶動改變！" },
+  B: { img: "SD_02.jpg", text: "你是「火焰型天才」🔥\n魅力四射，擅長激勵與連結人心！" },
+  C: { img: "SD_03.jpg", text: "你是「節奏型天才」🎵\n步調穩定，專注於流程與團隊節奏！" },
+  D: { img: "SD_04.jpg", text: "你是「鋼鐵型天才」⚙️\n精準細膩，擅長系統與執行任務！" }
+};
+
+const questionsDiv = document.getElementById("questions");
+let currentQuestion = 0;
+
+function showQuestion(index) {
+    document.querySelectorAll('.question').forEach((q, i) => {
+        q.classList.remove('active');
+        if (i === index) {
+            q.classList.add('active');
+        }
+    });
+    updateProgressBar(index);
+}
+
+function nextQuestion() {
+    if (currentQuestion < quizData.length - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+    }
+}
+
+function updateProgressBar(index) {
+    const percent = ((index + 1) / quizData.length) * 100;
+    document.getElementById("progressBar").style.width = percent + "%";
+}
+
+function restartQuiz() {
+  document.getElementById("result").innerHTML = "";
+  document.querySelectorAll('input[type=radio]').forEach(r => r.checked = false);
+  currentQuestion = 0;
+  showQuestion(currentQuestion);
+}
+
+quizData.forEach((choices, index) => {
+    const qDiv = document.createElement("div");
+    qDiv.className = "question";
+    qDiv.innerHTML = `<p><strong>${index + 1}. ${questionTitles[index]}</strong></p>`;
+    choices.forEach((choice, i) => {
+        const letter = String.fromCharCode(65 + i);
+        qDiv.innerHTML += `
+          <div class="options">
+            <label>
+              <input type="radio" name="q${index}" value="${letter}">
+              ${letter}. ${choice}
+            </label>
+          </div>
+        `;
+    });
+
+    const nav = document.createElement("div");
+    nav.className = "nav-buttons";
+    if (index > 0) {
+        const backBtn = document.createElement("button");
+        backBtn.textContent = "上一題";
+        backBtn.type = "button";
+        backBtn.onclick = prevQuestion;
+        nav.appendChild(backBtn);
+    }
+    if (index < quizData.length - 1) {
+        const nextBtn = document.createElement("button");
+        nextBtn.textContent = "下一題";
+        nextBtn.type = "button";
+        nextBtn.onclick = nextQuestion;
+        nav.appendChild(nextBtn);
+    } else {
+        const resultBtn = document.createElement("button");
+        resultBtn.textContent = "計算結果";
+        resultBtn.type = "button";
+        resultBtn.onclick = calculateResult;
+        nav.appendChild(resultBtn);
+    }
+
+    qDiv.appendChild(nav);
+    questionsDiv.appendChild(qDiv);
+});
+
+function calculateResult() {
+  const result = { A: 0, B: 0, C: 0, D: 0 };
+  for (let i = 0; i < quizData.length; i++) {
+    const selected = document.querySelector(`input[name='q${i}']:checked`);
+    if (selected) {
+      result[selected.value]++;
+    }
+  }
+  const maxKey = Object.keys(result).reduce((a, b) => result[a] >= result[b] ? a : b);
+  const data = resultData[maxKey];
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = `
+    <img src="SD_00.jpg" alt="封面圖">
+    <div style="margin-bottom: 20px;">A: ${result.A} 個｜B: ${result.B} 個｜C: ${result.C} 個｜D: ${result.D} 個</div>
+    <img src="${data.img}" alt="結果圖">
+    <div>${data.text.replace(/\n/g, "<br>")}</div>
+    <div class="nav-buttons"><button onclick="restartQuiz()">重新測驗</button></div>
+  `;
+}
+
+showQuestion(0);
+</script>
+</body>
+</html>
